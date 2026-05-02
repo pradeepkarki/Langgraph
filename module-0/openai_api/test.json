@@ -1,0 +1,31 @@
+"id": "chatcmpl-942",
+"choices": [
+    {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+            "content": "Hello! How can I assist you today? 😊 Would you like help with something right now?",
+            "refusal": null,
+            "role": "assistant",
+            "annotations": null,
+            "audio": null,
+            "function_call": null,
+            "tool_calls": null,
+            "reasoning": "Okay, the user said \"Hello /think\", so I need to respond appropriately. They may be testing if I'm available. Let me check my previous responses. Since the conversation started with \"Hello /think\", I have to acknowledge that and maybe ask if they need help. I should keep it friendly and open-ended, which is good for a helpful assistant. No need to get too technical here. Just a simple, polite reply.\n"
+        }
+    }
+],
+"created": 1777457154,
+"model": "qwen3:0.6b",
+"object": "chat.completion",
+"service_tier": null,
+"system_fingerprint": "fp_ollama",
+"usage": {
+    "completion_tokens": 113,
+    "prompt_tokens": 11,
+    "total_tokens": 124,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": null
+}
+}

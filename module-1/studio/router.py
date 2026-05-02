@@ -1,7 +1,9 @@
-from langchain_openai import ChatOpenAI
+from langchain_community.chat_models import ChatOllama
+from langchain_core.messages import SystemMessage
 from langgraph.graph import MessagesState
 from langgraph.graph import StateGraph, START, END
 from langgraph.prebuilt import ToolNode, tools_condition
+from langchain_ollama import ChatOllama
 
 # Tool
 def multiply(a: int, b: int) -> int:
@@ -14,12 +16,11 @@ def multiply(a: int, b: int) -> int:
     return a * b
 
 # LLM with bound tool
-llm = ChatOpenAI(model="gpt-4o")
-llm_with_tools = llm.bind_tools([multiply])
+llm = ChatOllama(model="llama3.2")
 
 # Node
 def tool_calling_llm(state: MessagesState):
-    return {"messages": [llm_with_tools.invoke(state["messages"])]}
+    return {"messages": [llm.invoke(state["messages"])]}
 
 # Build graph
 builder = StateGraph(MessagesState)
@@ -36,3 +37,5 @@ builder.add_edge("tools", END)
 
 # Compile graph
 graph = builder.compile()
+
+graph.invoke({"messages": [SystemMessage(content="What is 5 multiplied by 3?")]})
